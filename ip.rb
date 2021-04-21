@@ -11,6 +11,14 @@ unless ARGV[0]
   return
 end
 
+def ip_names
+  Socket.getifaddrs.map do |ifnames|
+    next unless ifnames.addr.ipv4?
+    puts "" + ifnames.name
+  end
+end
+
+
 def ip_all
   Socket.getifaddrs.map do |iface|
     next unless iface.addr.ipv4?
