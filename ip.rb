@@ -28,8 +28,10 @@ def ip_all
 end
 
 case ARGV[0]
-when "a"||"A"
+when "a","A"
   ip_all
+when "l","L"
+  ip_names
 else
   puts "error roror"
 end
