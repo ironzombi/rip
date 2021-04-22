@@ -23,7 +23,7 @@ def ip_all
   Socket.getifaddrs.map do |iface|
     next unless iface.addr.ipv4?
     puts "\nName:             :" + iface.name
-    puts "\nAddress:          :" + iface.addr.ip_address
+    puts "Address:          :" + iface.addr.ip_address
   end
 end
 
