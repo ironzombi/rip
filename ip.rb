@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 require 'socket'
-/* Version 0.01 v0.1 will be initial release  */
+#/* Version 0.01 v0.1 will be initial release  */
 unless ARGV[0]
   puts "Available Interfaces: \n"
   Socket.getifaddrs.map do |iface|
