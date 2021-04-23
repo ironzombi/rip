@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 require 'socket'
 #/* Version 0.01 v0.1 will be initial release  */
+#default behaviour - called with no args list available interfaces
 unless ARGV[0]
   puts "Available Interfaces: \n"
   Socket.getifaddrs.map do |iface|
@@ -10,14 +11,14 @@ unless ARGV[0]
   end
   return
 end
-
+#when ip l - list the interfaces #TODO make this different than default behaviour
 def ip_names
   Socket.getifaddrs.map do |ifnames|
     next unless ifnames.addr.ipv4?
     puts "" + ifnames.name
   end
 end
-
+#when ip a - list the interfaces and Addresses #TODO add netmask, maybe more ?
 def ip_all
   Socket.getifaddrs.map do |iface|
     next unless iface.addr.ipv4?
@@ -25,12 +26,12 @@ def ip_all
     puts "Address:          :" + iface.addr.ip_address
   end
 end
-
+#main-------
 case ARGV[0]
 when "a","A"
   ip_all
 when "l","L"
   ip_names
 else
-  puts "error roror"
+  puts "Command not recognized"
 end
