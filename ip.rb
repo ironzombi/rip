@@ -18,7 +18,6 @@ def ip_names
   end
 end
 
-
 def ip_all
   Socket.getifaddrs.map do |iface|
     next unless iface.addr.ipv4?
