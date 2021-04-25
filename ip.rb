@@ -7,7 +7,7 @@ unless ARGV[0]
   Socket.getifaddrs.map do |iface|
     next unless iface.addr.ipv4?
 
-    puts "" + iface.name
+    puts '' + iface.name
     # puts "\Address:          : " + iface.addr.ip_address
   end
   return
@@ -17,7 +17,8 @@ end
 def ip_names
   Socket.getifaddrs.map do |ifnames|
     next unless ifnames.addr.ipv4?
-    puts "" + ifnames.name
+
+    puts '' + ifnames.name
   end
 end
 # when ip a - list the interfaces and Addresses #TODO add netmask, maybe more ?
@@ -25,16 +26,17 @@ end
 def ip_all
   Socket.getifaddrs.map do |iface|
     next unless iface.addr.ipv4?
+
     puts "\nName:             :" + iface.name
-    puts "Address:          :" + iface.addr.ip_address
+    puts 'Address:          : ' + iface.addr.ip_address
   end
 end
 # main-------
 case ARGV[0]
-when "a","A"
+when 'a', 'A'
   ip_all
-when "l","L"
+when 'l', 'L'
   ip_names
 else
-  puts "Command not recognized"
+  puts 'Command not recognized'
 end
