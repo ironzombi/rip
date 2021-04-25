@@ -9,7 +9,7 @@ unless ARGV[0]
   Socket.getifaddrs.map do |iface|
     next unless iface.addr.ipv4?
 
-    puts '' + iface.name
+    puts "  #{iface.name}"
     # puts "\Address:          : " + iface.addr.ip_address
   end
   return
@@ -20,7 +20,7 @@ def ip_names
   Socket.getifaddrs.map do |ifnames|
     next unless ifnames.addr.ipv4?
 
-    puts '' + ifnames.name
+    puts "  #{ifnames.name}"
   end
 end
 
@@ -29,8 +29,8 @@ def ip_all
   Socket.getifaddrs.map do |iface|
     next unless iface.addr.ipv4?
 
-    puts "\nName:             :" + iface.name
-    puts 'Address:          :' + iface.addr.ip_address
+    puts "\nName:             :  #{iface.name}"
+    puts "Address:          :' + #{iface.addr.ip_address}"
   end
 end
 
@@ -50,7 +50,7 @@ def intface_info
   Socket.getifaddrs.map do |iface|
     next unless iface.addr.ipv4?
 
-    p iface.broaddr
+    p iface.netmask
   end
 end
 
