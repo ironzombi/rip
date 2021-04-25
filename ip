@@ -43,12 +43,13 @@ def bcast_info
   end
 end
 
-# useless - list specific interface. #todo
+# not working - list specific interface stuff. #todo
 def intface_info
   Socket.getifaddrs.map do |iface|
     next unless iface.addr.ipv4?
 
-    puts iface.addr.ip_address
+    puts iface.vhid
+    puts iface.flags
   end
 end
 
