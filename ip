@@ -28,7 +28,7 @@ def ip_all
     next unless iface.addr.ipv4?
 
     puts "\nName:             :" + iface.name
-    puts 'Address:          : ' + iface.addr.ip_address
+    puts 'Address:          :' + iface.addr.ip_address
   end
 end
 
@@ -36,7 +36,8 @@ def bcast_info
   Socket.getifaddrs.map do |iface|
     next unless iface.addr.ipv4?
 
-    puts iface.name + ':' + iface.inspect
+    output = iface.name + ':' + iface.inspect
+    puts('Address:' + output.split[1..4].to_s)
   end
 end
 # main-------
