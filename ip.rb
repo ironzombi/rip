@@ -29,6 +29,7 @@ def ip_all
 
     puts "\nName:             :" + iface.name
     puts 'Address:          : ' + iface.addr.ip_address
+    puts 'Broadcast:         : ' + iface.addr.broadaddr
   end
 end
 # main-------
