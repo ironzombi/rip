@@ -1,6 +1,8 @@
-#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+#!/usr/bin/env ruby -w
 require 'socket'
-# /* Version 0.02 v0.1 will be initial release  */
+# /* Version 0.03 -- v0.1 will be initial release  */
 # default behaviour - called with no args lists available interfaces
 unless ARGV[0]
   puts "Available Interfaces: \n"
