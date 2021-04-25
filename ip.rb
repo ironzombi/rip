@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 require 'socket'
-# /* Version 0.01 v0.1 will be initial release  */
+# /* Version 0.02 v0.1 will be initial release  */
 # default behaviour - called with no args list available interfaces
 unless ARGV[0]
   puts "Available Interfaces: \n"
@@ -29,7 +29,14 @@ def ip_all
 
     puts "\nName:             :" + iface.name
     puts 'Address:          : ' + iface.addr.ip_address
-    puts 'Broadcast:         : ' + iface.addr.broadaddr
+  end
+end
+
+def bcast_info
+  Socket.getifaddrs.map do |iface|
+    next unless iface.addr.ipv4?
+
+    puts iface.name + ':' + iface.inspect
   end
 end
 # main-------
@@ -38,6 +45,8 @@ when 'a', 'A', '-a', '-A'
   ip_all
 when 'l', 'L', '-l', '-L'
   ip_names
+when 'b', 'B', '-b', '-B'
+  bcast_info
 else
   puts 'Command not recognized'
 end
