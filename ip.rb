@@ -33,9 +33,9 @@ def ip_all
 end
 # main-------
 case ARGV[0]
-when 'a', 'A'
+when 'a', 'A', '-a', '-A'
   ip_all
-when 'l', 'L'
+when 'l', 'L', '-l', '-L'
   ip_names
 else
   puts 'Command not recognized'
