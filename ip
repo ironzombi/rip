@@ -42,6 +42,16 @@ def bcast_info
     puts int.gsub('?', '0')
   end
 end
+
+# useless - list specific interface. #todo
+def intface_info
+  Socket.getifaddrs.map do |iface|
+    next unless iface.addr.ipv4?
+
+    puts iface.addr.ip_address
+  end
+end
+
 # main-------
 case ARGV[0]
 when 'a', 'A', '-a', '-A'
@@ -50,6 +60,8 @@ when 'l', 'L', '-l', '-L'
   ip_names
 when 'n', 'N', '-n', '-N'
   bcast_info
+when 'i', 'I', '-i', '-I'
+  intface_info
 else
   puts 'Command not recognized'
 end
