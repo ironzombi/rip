@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 require 'socket'
 # /* Version 0.02 v0.1 will be initial release  */
-# default behaviour - called with no args list available interfaces
+# default behaviour - called with no args lists available interfaces
 unless ARGV[0]
   puts "Available Interfaces: \n"
   Socket.getifaddrs.map do |iface|
@@ -12,8 +12,8 @@ unless ARGV[0]
   end
   return
 end
-# when ip l - list the interfaces #TODO make this different than default
 
+# ip -l list interface names
 def ip_names
   Socket.getifaddrs.map do |ifnames|
     next unless ifnames.addr.ipv4?
@@ -21,8 +21,8 @@ def ip_names
     puts '' + ifnames.name
   end
 end
-# when ip a - list the interfaces and Addresses #TODO add netmask, maybe more ?
 
+# ip -a lists interface name and address(s)
 def ip_all
   Socket.getifaddrs.map do |iface|
     next unless iface.addr.ipv4?
@@ -32,12 +32,14 @@ def ip_all
   end
 end
 
+# ip -n list netmask
 def bcast_info
   Socket.getifaddrs.map do |iface|
     next unless iface.addr.ipv4?
 
     output = iface.name + ':' + iface.inspect
-    puts('Address:' + output.split[1..4].to_s)
+    int = ('Address:' + ' ' + output.split[1] + '   ' + output.split[3..4].to_s)
+    puts int.gsub('?', '0')
   end
 end
 # main-------
@@ -46,7 +48,7 @@ when 'a', 'A', '-a', '-A'
   ip_all
 when 'l', 'L', '-l', '-L'
   ip_names
-when 'b', 'B', '-b', '-B'
+when 'n', 'N', '-n', '-N'
   bcast_info
 else
   puts 'Command not recognized'
