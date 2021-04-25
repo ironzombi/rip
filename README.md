@@ -25,6 +25,8 @@ ip                  -- lists available interface names
 ip -a               -- lists all avaialble info for available interfaces
 ip -l               -- lists available interfaces only
 ip -n               -- lists interface netmask information
+_____________________________________________________________
+just need it to list ip, netmask and yeah she is good mate.
 </pre>
 
 why does this even need a README.md ?
