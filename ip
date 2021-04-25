@@ -45,13 +45,12 @@ def bcast_info
   end
 end
 
-# not working - list specific interface stuff. #todo
+# ok this ended up broadcast info....err ok
 def intface_info
   Socket.getifaddrs.map do |iface|
     next unless iface.addr.ipv4?
 
-    puts iface.vhid
-    puts iface.flags
+    p iface.broaddr
   end
 end
 
@@ -63,8 +62,10 @@ when 'l', 'L', '-l', '-L'
   ip_names
 when 'n', 'N', '-n', '-N'
   bcast_info
-when 'i', 'I', '-i', '-I'
+when 'b', 'B', '-b', '-B'
   intface_info
+when 'h', 'H', '-h', '-H'
 else
   puts 'Command not recognized'
+  exit
 end
