@@ -54,6 +54,7 @@ def intface_info
   end
 end
 
+# ip -h show the usage
 def show_help
   puts 'usage: '
   puts 'a, -a             :List all interfaces and their Addresses'
