@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 #!/usr/bin/env ruby -w
 require 'socket'
 # /* Version 0.03 -- v0.1 will be initial release  */
