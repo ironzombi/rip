@@ -54,6 +54,15 @@ def intface_info
   end
 end
 
+def show_help
+  puts 'usage: '
+  puts 'a, -a             :List all interfaces and their Addresses'
+  puts 'l, -l             :List all interface names'
+  puts 'n, -n             :List interface netmask settings'
+  puts 'b, -b             :List interface broadcast info....err'
+  puts 'h, -h             :Show this message'
+end
+
 # main-------
 case ARGV[0]
 when 'a', 'A', '-a', '-A'
@@ -65,6 +74,7 @@ when 'n', 'N', '-n', '-N'
 when 'b', 'B', '-b', '-B'
   intface_info
 when 'h', 'H', '-h', '-H'
+  show_help
 else
   puts 'Command not recognized'
   exit
