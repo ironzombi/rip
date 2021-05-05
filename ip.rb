@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby -w
 require 'socket'
+require 'rbconfig'
+
 # /* Version 0.03 -- v0.1 will be initial release  */
 # default behaviour - called with no args lists available interfaces
 unless ARGV[0]
@@ -52,6 +54,26 @@ def intface_info
   end
 end
 
+# checks what OS, code from selenium
+def check_os
+  @os ||= (
+    host_os = RbConfig::CONFIG['host_os']
+    case host_os
+    when /mswin|msys|mingw|cygwin|bccwin|wince|emc/
+      :windows
+    when /darwin|mac os/
+      :macosx
+    when /linux/
+      :linux 
+    when /solaris|bsd/
+      :unix
+    else
+      raise Error::WebDriverError, "unknown os: {host_os.inspect}"
+    end
+  )
+  puts(@os)
+end
+
 # ip -h show the usage
 def show_help
   puts 'usage: '
@@ -60,6 +82,7 @@ def show_help
   puts 'n, -n             :List interface netmask settings'
   puts 'b, -b             :List interface broadcast info....err'
   puts 'h, -h             :Show this message'
+  puts 'o, -o             :Show operating system'
 end
 
 # main-------
@@ -74,6 +97,8 @@ when 'b', 'B', '-b', '-B'
   intface_info
 when 'h', 'H', '-h', '-H'
   show_help
+when 'o', 'O', '-o', '-O'
+  check_os 
 else
   puts 'Command not recognized'
   exit
