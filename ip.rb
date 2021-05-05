@@ -2,7 +2,7 @@
 require 'socket'
 require 'rbconfig'
 
-# /* Version 0.03 -- v0.1 will be initial release  */
+# /* Version 0.04 -- v0.1 will be initial release  */
 # default behaviour - called with no args lists available interfaces
 unless ARGV[0]
   puts "Available Interfaces: \n"
@@ -54,7 +54,7 @@ def intface_info
   end
 end
 
-# checks what OS, code from selenium
+# checks what OS, - code from selenium
 def check_os
   @os ||= (
     host_os = RbConfig::CONFIG['host_os']
@@ -71,7 +71,6 @@ def check_os
       raise Error::WebDriverError, "unknown os: {host_os.inspect}"
     end
   )
-  puts(@os)
 end
 
 # ip -h show the usage
@@ -86,6 +85,8 @@ def show_help
 end
 
 # main-------
+check_os
+puts @os 
 case ARGV[0]
 when 'a', 'A', '-a', '-A'
   ip_all

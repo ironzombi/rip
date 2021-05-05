@@ -29,4 +29,5 @@ _____________________________________________________________
 just need it to list ip, netmask and yeah she is good mate.
 </pre>
 
+drop it in $PATH; chmod +x it and it will fix that "command not found" bug
 why does this even need a README.md ?
