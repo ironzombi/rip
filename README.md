@@ -8,7 +8,7 @@
 88    `8b   88       88 88       d8  `8b   d8'     88 88           
 88     `8b  "8a,   ,a88 88b,   ,a8"   `8b,d8'      88 88           
 88      `8b  `"YbbdP'Y8 8Y"Ybbd8"'      Y88'       88 88           
-                                        d8'                        
+                                        d8'                        for macos
                                        d8'
  Ruby IP command
 
