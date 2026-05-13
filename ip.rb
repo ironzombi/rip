@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby -w
 require 'socket'
 require 'rbconfig'
+require 'resolv'
 
 # /* Version 0.04 -- v0.1 will be initial release  */
 # default behaviour - called with no args lists available interfaces
@@ -54,6 +55,12 @@ def intface_info
   end
 end
 
+def ext_info
+  resolver = Resolv::DNS.new(nameserver: ["208.67.222.222"])
+  addresses = resolver.getaddresses("myip.opendns.com")
+  puts addresses.map(&:to_s)
+end
+
 # checks what OS, - code from selenium
 def check_os
   @os ||= (
@@ -80,6 +87,7 @@ def show_help
   puts 'l, -l             :List all interface names'
   puts 'n, -n             :List interface netmask settings'
   puts 'b, -b             :List interface broadcast info....err'
+  puts 'e, -e             :List external IP'
   puts 'h, -h             :Show this message'
   puts 'o, -o             :Show operating system'
 end
@@ -99,7 +107,9 @@ when 'b', 'B', '-b', '-B'
 when 'h', 'H', '-h', '-H'
   show_help
 when 'o', 'O', '-o', '-O'
-  check_os 
+  check_os
+when 'e', 'E', '-e', '-E'
+  ext_info
 else
   puts 'Command not recognized'
   exit
