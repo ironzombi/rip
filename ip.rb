@@ -55,6 +55,7 @@ def intface_info
   end
 end
 
+# ip -e shows external IP (ISP)
 def ext_info
   resolver = Resolv::DNS.new(nameserver: ["208.67.222.222"])
   addresses = resolver.getaddresses("myip.opendns.com")
